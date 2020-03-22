@@ -1,0 +1,584 @@
+@font-face {
+    font-family: Gotham;
+    font-weight: Ultra;
+    src: url("../fonts/Gotham\ Ultra.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Moderat;
+    font-weight: Regular;
+    src: url("../fonts/Moderat\ Regular.ttf") format("opentype");
+}
+
+
+a {
+    cursor: pointer;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+* {
+    margin: 0%;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+}
+
+.Gotham {
+    font-family: Gotham;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: Moderat;
+}
+
+#bg_1 {
+    position: absolute;
+    height: 1055px;
+    left: -17%;
+    top: -260px;
+    z-index: -1;
+    filter: grayscale(95%);
+    background-image: url(../Assets/music_white_black_guitar_65718.png);
+    background-size: cover;
+    width: 117%;
+}
+
+.header {
+    background-color: transparent;
+    box-shadow: none !important;
+}
+
+nav {
+    padding-top: .5em;
+    padding-bottom: .5em;
+    background-color: transparent;
+}
+
+.logo {
+    margin: 0;
+    font-size: 1.45em;
+}
+
+.logo a {
+    margin: 10px 15px;
+    text-align: center;
+    display: block;
+    font-family: Gotham;
+    padding-bottom: 5px;
+}
+
+.main-nav {
+    margin-top: 5px;
+}
+
+.main-nav a {
+    font-family: Moderat;
+    margin: 10px 15px;
+    padding-bottom: 5px;
+    text-align: center;
+    display: block;
+}
+
+.main-nav a {
+    color: #ffffff;
+    font-size: .99em;
+    transition: all .2s ease-in-out;
+}
+
+.main-nav .active a {
+    color: #E29F0F;
+}
+
+.main-nav a:hover {
+    color: #E29F0F;
+    background-color: transparent;
+}
+
+@media (min-width: 769px) {
+    .header,
+    .main-nav {
+        display: flex;
+    }
+    nav {
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+        margin: 0 auto;
+        max-width: 1150px;
+    }
+}
+
+@media (min-width: 1025px) {
+    nav {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.real_div {
+    width: 54%;
+    font-size: 75px;
+    margin: 8% 0 0 6%;
+    color: rgba(255, 255, 255, 1);
+}
+
+.Buy_div {
+    opacity: 0.78;
+    width: 35%;
+    text-align: left;
+    font-family: Moderat;
+    font-weight: Regular;
+    font-size: 23px;
+    margin-left: 6%;
+    color: rgba(255, 255, 255, 1);
+}
+
+.Rectangle_2 {
+    width: 88%;
+    height: 79px;
+    margin-top: 25px;
+    margin-left: 6%;
+}
+
+.type {
+    width: 10%;
+    height: 100px;
+}
+
+.type img {
+    width: 20%;
+}
+
+.categ .activator {
+    filter: grayscale(85%);
+}
+
+.categ .gallery-text {
+    z-index: 9999;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.categ h3 {
+    color: #e99f0e;
+    font-size: 50px;
+    padding: 16px 32px;
+}
+
+.categ .card:hover .activator {
+    transition: 1s ease;
+    filter: grayscale(35%);
+    transform: scale(1.3);
+}
+
+.pop {
+    color: black;
+    font-size: 45px;
+    padding-left: 6%;
+}
+
+.pop_prod .card-title {
+    font-family: Moderat;
+    font-weight: Regular;
+    font-size: 20px;
+    height: 10vh;
+}
+
+.pop_prod .price {
+    text-align: center;
+    font-size: 23px;
+}
+
+.pop_prod .card-image {
+    height: max-content;
+    background-color: #d2d0d0;
+}
+
+.pop_prod .activator {
+    mix-blend-mode: darken;
+}
+
+.pop_prod .gallery-text {
+    z-index: 9999;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    height: 0;
+    transition: .5s ease;
+}
+
+.pop_prod .gallery-text img {
+    width: 100%;
+}
+
+.pop_prod .card:hover .activator {
+    transition: 1s ease;
+    filter: grayscale(35%);
+    transform: scale(1.3);
+}
+
+.pop_prod .card:hover .gallery-text {
+    height: 23%;
+    position: absolute;
+    -webkit-transform: translateY(-100%, 0);
+    -ms-transform: translateY(-100%, 0);
+    transform: translateY(-100%, 0);
+}
+
+.bg_2 {
+    position: absolute;
+    background-image: url(../Assets/artist-bass-close-up-drum-542553@2x.png);
+    height: 1818px;
+    left: -7%;
+    z-index: -1;
+}
+
+.bg_2 img {
+    width: 100%;
+}
+
+.sec3_leftrow,
+.sec3_rightrow {
+    width: 85%;
+}
+
+.sec3 {
+    margin-top: 8%;
+}
+
+.sec3 h3 {
+    color: #e99f0e;
+    font-size: 50px;
+}
+
+.sec3 .gallery-text {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+}
+
+.sec3 .activator {
+    height: 430px;
+    filter: grayscale(85%);
+}
+
+.sec3_leftrow .gallery-text {
+    width: 186%;
+    left: 31%;
+    top: 12%;
+}
+
+.sec3_leftrow ul {
+    color: white;
+    font-family: Moderat;
+    font-weight: Regular;
+    font-size: 25px;
+    padding-top: 30%;
+}
+
+.sec3_leftrow li {
+    padding-top: 5%;
+}
+
+.sec3_leftrow .right_side ul {
+    color: white;
+    font-family: Moderat;
+    font-weight: Regular;
+    font-size: 25px;
+    padding-top: 30%;
+}
+
+.sec3_leftrow .right_side li {
+    padding-top: 5%;
+}
+
+
+/**/
+
+.sec3_rightrow .gallery-text {
+    right: 22%;
+    top: 12%;
+    width: 124%;
+}
+
+.sec3_rightrow ul {
+    font-family: Moderat;
+    font-weight: Regular;
+    font-size: 25px;
+    padding-top: 52%;
+}
+
+.sec3_rightrow li {
+    padding-top: 5%;
+    color: white;
+}
+
+.sec4 {
+    padding-top: 5%;
+}
+
+.sec4 div .Gotham {
+    font-size: 45px;
+    color: black;
+    width: 68%;
+}
+
+figure figcaption {
+    text-align: center;
+    font-size: 14px;
+    font-family: Gotham;
+    color: #e99f0e;
+    padding-top: 10px;
+}
+
+.comment p {
+    font-size: 17px;
+    font-family: Moderat;
+    font-weight: Regular;
+    color: #e99f0e;
+    padding: 5%;
+}
+
+.comment {
+    display: inline-flex;
+    background-color: black;
+}
+
+.comment img {
+    width: 101px;
+    height: 101px;
+}
+
+.para {
+    font-size: 20px;
+    font-family: Moderat;
+    font-weight: Regular;
+    padding-right: 8%;
+}
+
+.extens .over {
+    padding: 0 !important;
+    z-index: -1;
+    position: relative;
+    left: 19%;
+    filter: drop-shadow(1px 4px 6px black);
+}
+
+.extens img {
+    height: 300px;
+    width: 970px;
+}
+
+.extens .s11 {
+    padding-right: 0 !important;
+    margin-top: -6%;
+    display: flex;
+}
+
+.extens .par {
+    font-size: 45px;
+    color: black;
+    width: 31%;
+    position: absolute;
+    z-index: 1;
+    padding-top: 8%;
+}
+
+.sec5 {
+    margin-top: 10%;
+    padding-top: 5%;
+    margin-bottom: 0 !important;
+    padding-bottom: 2%;
+    background-image: url(../Assets/523@2x.png);
+    background-size: contain;
+}
+
+.sec5 p {
+    padding-top: 4%;
+    font-family: Moderat;
+    font-weight: Regular;
+    font-size: 23px;
+}
+
+.sec5 .Gotham,
+.sec5 li a {
+    font-size: 23px;
+    color: black;
+}
+
+@media (max-width:600px) {
+    .nav-btn {
+        display: inline-block;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+    }
+    .nav-btn>label {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        padding: 13px;
+    }
+    .nav-btn>label:hover,
+    #nav-check:checked~.nav-btn>label {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+    .nav-btn>label>span {
+        display: block;
+        width: 25px;
+        height: 10px;
+        border-top: 2px solid #eee;
+    }
+    .main-nav {
+        position: absolute;
+        display: block;
+        width: 100%;
+        background-color: #333;
+        height: 0px;
+        transition: all 0.3s ease-in;
+        overflow-y: hidden;
+        top: 50px;
+        left: 0px;
+    }
+    .main-nav>a {
+        display: block;
+        width: 100%;
+    }
+    #nav-check:not(:checked)~.main-nav {
+        height: 0px;
+    }
+    #nav-check:checked~.main-nav {
+        height: calc(50vh - 50px);
+        overflow-y: auto;
+        z-index: 1;
+        display: grid;
+    }
+    .real_div {
+        width: 85%;
+        font-size: 45px;
+    }
+    .Buy_div {
+        width: 75%;
+        font-size: 18px;
+    }
+    .categ h3 {
+        font-size: 30px;
+    }
+    .pop {
+        font-size: 25px;
+    }
+    .pop_prod .card-title {
+        height: 6vh;
+    }
+    .sec3 h3 {
+        font-size: 25px;
+    }
+    .sec3 ul {
+        font-size: 13px;
+        padding-top: 62%;
+    }
+    .holder {
+        width: 52% !important;
+    }
+    .sec3 .activator {
+        height: 168px;
+    }
+    .offset-s2,
+    .offset-s3 {
+        width: 43% !important;
+        margin-left: 5% !important;
+    }
+    .sec3_leftrow,
+    .sec3_rightrow {
+        width: 100%;
+    }
+    .sec3_rightrow .gallery-text {
+        right: 22%;
+        top: -8%;
+        width: 155%;
+    }
+    .bg_2 {
+        height: 900px;
+    }
+    .sec4 div .Gotham {
+        font-size: 25px;
+    }
+    .sec4 {
+        padding-top: 20%;
+    }
+    .sec4_fr {
+        display: grid;
+    }
+    .sec4 div .Gotham {
+        font-size: 25px;
+        width: 121%;
+    }
+    .comma img {
+        width: 212%;
+    }
+    .para {
+        font-size: 14px;
+        width: 227%;
+    }
+    .sec_comm {
+        margin-left: 7% !important;
+    }
+    .comment {
+        margin-top: 20%;
+        width: 244%;
+    }
+    .comment p {
+        font-size: 12px;
+    }
+    figure figcaption {
+        font-size: 10px !important;
+    }
+    figure {
+        margin: 10px 10px 10px 0px !important
+    }
+    .comment img {
+        width: 63px;
+        height: 63px;
+    }
+    .extens .par {
+        font-size: 25px;
+        width: 56%;
+    }
+    .extens img {
+        height: 200px;
+        width: 270px;
+    }
+    .sec5 .Gotham,
+    .sec5 li a {
+        font-size: 20px;
+    }
+    .sec5 p {
+        font-size: 16px;
+        width: 195%;
+    }
+    .footer {
+        display: grid;
+    }
+    .fastnav {
+        margin-left: 9% !important;
+    }
+}

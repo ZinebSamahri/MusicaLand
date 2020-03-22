@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="790" viewBox="0 0 1440 790">
+  <defs>
+    <linearGradient id="linear-gradient" y1="0.15" x2="0.913" y2="0.715" gradientUnits="objectBoundingBox">
+      <stop offset="0"/>
+      <stop offset="0.998" stop-opacity="0"/>
+      <stop offset="1"/>
+    </linearGradient>
+  </defs>
+  <rect id="music-white-black-guitar-65718" width="1440" height="790" opacity="0.8" fill="url(#linear-gradient)"/>
+</svg>

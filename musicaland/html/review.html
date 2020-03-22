@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/review.css">
+    <title>Add a review | MUSICALAND</title>
+</head>
+
+<body>
+<nav class="header">
+        <input type="checkbox" id="nav-check">
+        <h1 class="logo"><a href="../index.html">MUSICALAND</a></h1>
+        <div class="nav-btn">
+            <label for="nav-check">
+              <span></span>
+              <span></span>
+              <span></span>
+            </label>
+        </div>
+        <ul class="main-nav">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#instruments">Instruments</a></li>
+            <li><a href="../index.html#pop">Products</a></li>
+            <li><a href="../index.html#sec4">About</a></li>
+            <li  class="active"><a href="review">Review</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li>
+                <a href="">Cart</a>
+            </li>
+        </ul>
+    </nav>
+    <br>
+    <p>Instruments > Guitars > Acoustic Guitars</p>
+    <br>
+    <h2>Jackson JS32TQ DKA Trans Bk</h2>
+    <section class="review">
+        <div class="left">
+            <img src="../Assets/Guitar.png" alt="guitar">
+            <br>
+        </div>
+        <div class="right">
+            <form action="">
+                <label>Rating</label>
+                <br>
+                <div class="rate">
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="text">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label for="star4" title="text">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="text">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="text">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="text">1 star</label>
+                </div>
+                <br>
+                <label for="title">Title</label>
+                <br>
+                <input type="text" name="title">
+                <br><br>
+                <label for="review">Review</label>
+                <br>
+                <textarea name="review" id="" cols="40" rows="10"></textarea>
+                <br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+
+    </section>
+
+</body>
+
+</html>
