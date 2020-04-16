@@ -3,7 +3,22 @@ session_start();
 $errors = array(); 
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'musicaland');
+$db = mysqli_connect('localhost', 'id12799307_root', 'rootroot', 'id12799307_musicaland');
+
+function IsEmail ($email) {
+    if (preg_match_all('/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/im',$email)) 
+        return TRUE;
+    else 
+        return FALSE;
+}
+
+function Mdp($password) {
+    
+    if (strlen( $password) >= 8 && preg_match('/\d/',$password) && preg_match('/[^A-Za-z0-9]/',$password) && preg_match('/[A-Z]+/',$password)) 
+        return TRUE;
+    else 
+        return FALSE;
+}
 
 if (isset($_POST['login'])) {
     $email = mysqli_real_escape_string($db, $_POST['email']);
@@ -12,9 +27,11 @@ if (isset($_POST['login'])) {
     if (empty($email)) {
         array_push($errors, "email is required");
     }
+    else if(!IsEmail($email)){array_push($errors, "Email is invalid");}
     if (empty($password)) {
         array_push($errors, "Password is required");
     }
+    else if(!Mdp($password)){array_push($errors, "Password is invalid");}
   
     if (count($errors) == 0) {
         $password = md5($password);
@@ -82,6 +99,17 @@ if (isset($_POST['login'])) {
             <input type="submit" value="login" name ="login">
         </form>
         <a href="signup.php">I don't have an account</a>
+                <div>
+            <?php  if (count($errors) > 0) : ?>
+                <div class="error">
+                    <?php foreach ($errors as $error) : ?>
+                        <div class="isa_error">
+                            <?php echo $error ?>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            <?php  endif ?>
+        </div>
     </section>
 </body>
 
