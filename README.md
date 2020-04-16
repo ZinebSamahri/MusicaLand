@@ -1,5 +1,5 @@
 # MusicaLand
-Un site E-commerce simple en HTML5 et PHP native
+Un site E-commerce simple en HTML5 et PHP native réalisé par SAMAHRI et NAFIHI.
 
 ## Description 
 
