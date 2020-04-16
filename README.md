@@ -12,3 +12,6 @@ La première page du site est la page d'accueil, qui se compose d'un menu de nav
 
 ![](1.gif)
 ![](2.gif)
+
+## Entity Relationship Diagram
+![](ERD.png)
