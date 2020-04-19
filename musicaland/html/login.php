@@ -1,10 +1,18 @@
 <?php
+//Démarrer la session
 session_start();
+//Redirection vers la page des produits au cas ou le client est déjà connecté
+if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {header('location: products.php');exit();}
+//Declaration d'un tableau pour stocker les erreurs 
 $errors = array(); 
 
-// connect to the database
+// Connexion à la base de données
 $db = mysqli_connect('localhost', 'id12799307_root', 'rootroot', 'id12799307_musicaland');
 
+//si la connexion échoue
+if (!$db) die('Could not connect: ' . mysql_error());
+
+//Fonction qui verifie l'email
 function IsEmail ($email) {
     if (preg_match_all('/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/im',$email)) 
         return TRUE;
@@ -12,40 +20,36 @@ function IsEmail ($email) {
         return FALSE;
 }
 
-function Mdp($password) {
-    
-    if (strlen( $password) >= 8 && preg_match('/\d/',$password) && preg_match('/[^A-Za-z0-9]/',$password) && preg_match('/[A-Z]+/',$password)) 
-        return TRUE;
-    else 
-        return FALSE;
-}
-
+// Si l'utilisateur clique sur le bouton login
 if (isset($_POST['login'])) {
+    //Récuperer les champs et échapper les caractères spéciaux des requêtes SQL
     $email = mysqli_real_escape_string($db, $_POST['email']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
   
-    if (empty($email)) {
-        array_push($errors, "email is required");
-    }
+    //Verifier les champs
+    if (empty($email)) array_push($errors, "email is required");
     else if(!IsEmail($email)){array_push($errors, "Email is invalid");}
-    if (empty($password)) {
-        array_push($errors, "Password is required");
-    }
-    else if(!Mdp($password)){array_push($errors, "Password is invalid");}
-  
-    if (count($errors) == 0) {
+    if (empty($password)) array_push($errors, "Password is required");
+    
+    // S'il n'y a pas d'erreurs
+    if (empty($errors)) {
+        //Crypter le mot de passe
         $password = md5($password);
+        //Creer la requete de récupération du client
         $query = "SELECT * FROM user WHERE email='$email' AND password='$password'";
+        //Executer la requete
         $results = mysqli_query($db, $query);
+        //si l'utilisateur existe
         if (mysqli_num_rows($results) == 1) {
+            //recuperer les infos du client et les stocker dans la session
             $user = $results->fetch_assoc();
-          $_SESSION['fname'] = $user['name'];
-          $_SESSION['email'] = $email;
-          $_SESSION['id'] = $user['id'];
-          header('location: products.php');
-        }else {
-            array_push($errors, "Wrong email/password combination");
+            $_SESSION['fname'] = $user['name'];
+            $_SESSION['id'] = $user['id'];
+            header('Location: products.php');
+            exit();
         }
+        //Sinon , ajouter un erreur 
+        else array_push($errors, "Wrong email/password combination");       
     }
   }
   
@@ -64,7 +68,7 @@ if (isset($_POST['login'])) {
 <body>
     <nav class="header">
         <input type="checkbox" id="nav-check">
-        <h1 class="logo"><a href="../index.html">MUSICALAND</a></h1>
+        <h1 class="logo"><a href="../index.php">MUSICALAND</a></h1>
         <div class="nav-btn">
             <label for="nav-check">
               <span></span>
@@ -73,16 +77,12 @@ if (isset($_POST['login'])) {
             </label>
         </div>
         <ul class="main-nav">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../index.html#instruments">Instruments</a></li>
-            <li><a href="../index.html#pop">Products</a></li>
-            <li><a href="../index.html#sec4">About</a></li>
-            <li ><a href="review.html">Review</a></li>
+            <li><a href="../index.php">Home</a></li>
+            <li><a href="../index.php#instruments">Instruments</a></li>
+            <li><a href="../index.php#pop">Products</a></li>
+            <li><a href="../index.php#sec4">About</a></li>
             <li class="active">
                 <a href="login.php">Login</a>
-            </li>
-            <li>
-                <a href="">Cart</a>
             </li>
         </ul>
     </nav>
@@ -96,12 +96,13 @@ if (isset($_POST['login'])) {
             <label for="password">Password</label>
             <input type="password" name="password">
             <br><br>
-            <input type="submit" value="login" name ="login">
+            <input type="submit" value="Log In" name ="login">
         </form>
         <a href="signup.php">I don't have an account</a>
-                <div>
+        <div>
+            <!-- Afficher les erreurs s'il y en a -->
             <?php  if (count($errors) > 0) : ?>
-                <div class="error">
+                <div class="message">
                     <?php foreach ($errors as $error) : ?>
                         <div class="isa_error">
                             <?php echo $error ?>

@@ -13,15 +13,11 @@
 html,
 body {
     width: 100%;
-    height: 100%;
-    background: url('../Assets/background.png') no-repeat center center fixed;
-    background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    overflow-x: hidden;
 }
 
 * {
-    margin: 0%;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     border: none;
@@ -35,18 +31,18 @@ ul {
 
 a {
     text-decoration: none;
-    color: #ffffff;
+    color: #000000;
     font-family: Moderat;
+}
+
+#nav-check {
+    display: none;
 }
 
 nav {
     padding-top: .5em;
     padding-bottom: .5em;
     background-color: transparent;
-}
-
-#nav-check {
-    display: none;
 }
 
 .logo {
@@ -75,7 +71,7 @@ nav {
 }
 
 .main-nav a {
-    color: #ffffff;
+    color: #000000;
     font-size: .99em;
     transition: all .2s ease-in-out;
 }
@@ -84,73 +80,68 @@ nav {
     color: #E29F0F;
 }
 
-.signup {
-    background-color: #ffffff;
-    display: block;
-    width: 50%;
-    margin: 1.5% auto;
-    padding: 50px 0;
+.main-nav .active a {
+    color: #E29F0F;
 }
 
-.signup h2 {
-    text-align: center;
-    font-family: Gotham;
-    font-size: 2.5em;
-    margin-bottom: 30px;
-}
-
-.signup label {
-    display: block;
-    margin: 0 auto;
-    width: 80%;
-    padding-bottom: 5px;
+.myprofile {
     font-family: Moderat;
+    font-weight: inherit;
+    font-size: 40px;
+    margin: 5% 0 3% 42%;
 }
 
-.signup input {
+.profile-container {
     font-family: Moderat;
-    display: block;
-    margin: 0 auto;
-    width: 80%;
-    height: 40px;
-    border: 1px solid #B5B5B5;
-    padding: 0 10px;
-}
-
-.signup input:focus {
-    border-color: #000000;
-}
-
-.signup input[type="submit"] {
-    display: block;
-    margin: 0 auto;
-    cursor: pointer;
-    border: 0;
-    color: #000000;
-    background-color: #E29F0F;
-    font-family: Gotham;
-    transition: all .2s ease-out;
-}
-
-.signup input[type="submit"]:hover {
-    background-color: rgb(235, 168, 25);
-}
-
-.signup a {
-    font-family: Moderat;
-    display: block;
-    margin: 15px auto 0 auto;
-    text-align: center;
-    color: #000000;
-    text-transform: uppercase;
-    font-size: 0.9em;
+    margin: auto;
+    border: 1px solid #E29F0F;
+    padding: 20px;
     width: max-content;
 }
 
+.profile-container form label {
+    font-size: 1.1em;
+}
 
-/* ================================= 
-  Media Queries
-==================================== */
+.profile-container form input {
+    font-family: Moderat;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 7px 20px;
+    font-size: 1.1em;
+    width: 300px;
+    height: 50px;
+    border: 1px solid black;
+}
+
+.profile-container form input[type="submit"] {
+    font-family: Gotham;
+    font-weight: inherit;
+    border: none;
+    background-color: #E99F0E;
+    cursor: pointer;
+}
+
+.valid {
+    font-size: 1.1em;
+    font-family: Moderat;
+    color: black;
+    background-color: rgba(4, 250, 33, 0.247);
+    margin: 10px 0px;
+    padding: 12px;
+    width: max-content;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.isa_error {
+    font-family: Moderat;
+    color: #D8000C;
+    background-color: #FFD2D2;
+    margin: 10px 0px;
+    padding: 12px;
+}
 
 @media (min-width: 769px) {
     .header,
@@ -163,27 +154,6 @@ nav {
         width: 80%;
         margin: 0 auto;
         max-width: 1150px;
-    }
-}
-
-@media (min-width: 875px) {
-    .signup input {
-        width: 50%;
-    }
-    .signup label {
-        width: 50%;
-    }
-}
-
-@media (max-width: 643px) {
-    .signup {
-        width: 90%;
-    }
-    .signup input {
-        width: 90%;
-    }
-    .signup label {
-        width: 90%;
     }
 }
 
@@ -241,27 +211,4 @@ nav {
         z-index: 1;
         display: grid;
     }
-}
-
-.isa_error {
-    color: #D8000C;
-    background-color: #FFD2D2;
-    margin: 10px 0px;
-    padding: 12px;
-}
-
-.message {
-    width: 50%;
-    margin: auto;
-}
-
-.isa_success {
-    color: rgb(34, 107, 40);
-    background-color: rgb(177, 216, 177);
-    margin: 10px 0px;
-    padding: 12px;
-}
-
-.main-nav .active a {
-    color: #E29F0F;
 }

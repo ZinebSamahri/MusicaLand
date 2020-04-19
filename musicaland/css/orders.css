@@ -9,9 +9,10 @@
     font-weight: Regular;
     src: url("../fonts/Moderat\ Regular.ttf") format("opentype");
 }
+
 html,
 body {
-    width: 100%;  
+    width: 100%;
     overflow-x: hidden;
 }
 
@@ -20,21 +21,38 @@ body {
     padding: 0;
     box-sizing: border-box;
     border: none;
-
-
 }
+
 ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
+.remove-order {
+    color: #D8000C;
+    background-color: #FFD2D2;
+    padding: 7px;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-left: 150px;
+}
+
+.shop {
+    font-family: Gotham;
+    font-weight: inherit;
+    border: none;
+    background-color: #E99F0E;
+    cursor: pointer;
+}
 
 a {
     text-decoration: none;
     color: #000000;
     font-family: Moderat;
+    margin-right: 9%;
+    float: right;
 }
 
 table {
@@ -45,7 +63,6 @@ table {
     border: 1px solid #E29F0F;
     font-family: Moderat;
 }
-
 
 .myorders {
     font-family: Moderat;
@@ -77,14 +94,16 @@ th {
 .orders h1 {
     padding-left: 40%;
 }
-#nav-check {display: none;}
-nav {
-	padding-top: .5em;
-	padding-bottom: .5em;
-    background-color: transparent;
 
+#nav-check {
+    display: none;
 }
 
+nav {
+    padding-top: .5em;
+    padding-bottom: .5em;
+    background-color: transparent;
+}
 
 .logo {
     margin: 0;
@@ -93,26 +112,26 @@ nav {
 
 .logo a {
     margin: 10px 15px;
-	text-align: center;
-	display: block;
+    text-align: center;
+    display: block;
     font-family: Gotham;
     padding-bottom: 5px;
 }
 
 .main-nav {
-	margin-top: 5px;
+    margin-top: 5px;
 }
 
 .main-nav a {
     font-family: Moderat;
     margin: 10px 15px;
     padding-bottom: 5px;
-	text-align: center;
-	display: block;
+    text-align: center;
+    display: block;
 }
 
 .main-nav a {
-	color: #000000;
+    color: #000000;
     font-size: .99em;
     transition: all .2s ease-in-out;
 }
@@ -121,38 +140,34 @@ nav {
     color: #E29F0F;
 }
 
-.main-nav .active a{
+.main-nav .active a {
     color: #E29F0F;
 }
 
-
 @media (min-width: 769px) {
-	.header,
-	.main-nav {
-		display: flex;
-	}
-	nav {
-		flex-direction: column;
-		align-items: center;
-		width: 80%;
-		margin: 0 auto;
-		max-width: 1150px;
-	
+    .header,
+    .main-nav {
+        display: flex;
     }
-    
+    nav {
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+        margin: 0 auto;
+        max-width: 1150px;
+    }
 }
 
 @media (min-width: 1025px) {
-	nav {
-		flex-direction: row;
-		justify-content: space-between;
+    nav {
+        flex-direction: row;
+        justify-content: space-between;
     }
-    
     .review {
         width: 86%;
     }
-
 }
+
 @media (max-width:600px) {
     .nav-btn {
         display: inline-block;
@@ -199,14 +214,20 @@ nav {
         overflow-y: auto;
         z-index: 1;
         display: grid;
-    }}
+    }
+}
 
 @media(max-width:911px) {
     .myorders {
         margin-left: 20px;
     }
-
     table {
         margin-left: 20px;
     }
+}
+
+.noOrders {
+    padding: 5% 0% 0% 44%;
+    font-size: 30px;
+    color: #8c8989;
 }

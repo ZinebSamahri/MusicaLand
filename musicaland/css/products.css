@@ -16,6 +16,14 @@ body {
     overflow-x: hidden;
 }
 
+.remove {
+    color: #D8000C;
+    background-color: #FFD2D2;
+    padding: 7px;
+    text-align: center;
+    border-radius: 5px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -81,18 +89,15 @@ nav {
 }
 
 .main-nav .active a {
-    color: #E29F0F;
+    color: rgb(226, 159, 15);
 }
-
-
 
 .ourproducts {
     font-family: Moderat;
     font-weight: inherit;
-    font-size: 40px;
-    margin-left: 150px;
+    font-size: 35px;
+    margin-left: 70px;
     margin-top: 50px;
-    margin-bottom: 15px;
 }
 
 .product-container {
@@ -101,7 +106,7 @@ nav {
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    padding-left: 20px;
+    padding: 3% 3% 0 3%;
 }
 
 .product-container h5 {
@@ -119,7 +124,8 @@ nav {
 
 .product-container .product-item {
     text-align: center;
-    flex: 4;
+    flex: 1 0 21%;
+    /* explanation below */
     margin-bottom: 40px;
 }
 
@@ -302,7 +308,6 @@ th {
     background-color: lightyellow;
     color: #000000;
 }
-
 
 .orders {
     clear: both;

@@ -26,7 +26,10 @@ body {
     box-sizing: border-box;
     border: none;
 }
-#nav-check {display: none;}
+
+#nav-check {
+    display: none;
+}
 
 ul {
     margin: 0;
@@ -80,7 +83,8 @@ nav {
 .main-nav a:hover {
     color: #E29F0F;
 }
-.main-nav .active a{
+
+.main-nav .active a {
     color: #E29F0F;
 }
 
@@ -240,15 +244,17 @@ nav {
         overflow-y: auto;
         z-index: 1;
         display: grid;
-    }}
-    
+    }
+}
+
 .isa_error {
     color: #D8000C;
     background-color: #FFD2D2;
     margin: 10px 0px;
-    padding:12px;
+    padding: 12px;
 }
-.error {
-    width: 60%;
+
+.message {
+    width: 50%;
     margin: auto;
 }

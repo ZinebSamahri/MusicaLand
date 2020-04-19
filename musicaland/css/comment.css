@@ -27,6 +27,10 @@ body {
     border: none;
 }
 
+#nav-check {
+    display: none;
+}
+
 ul {
     margin: 0;
     padding: 0;
@@ -43,10 +47,6 @@ nav {
     padding-top: .5em;
     padding-bottom: .5em;
     background-color: transparent;
-}
-
-#nav-check {
-    display: none;
 }
 
 .logo {
@@ -84,22 +84,26 @@ nav {
     color: #E29F0F;
 }
 
-.signup {
+.main-nav .active a {
+    color: #E29F0F;
+}
+
+.login {
     background-color: #ffffff;
     display: block;
     width: 50%;
-    margin: 1.5% auto;
+    margin: 5% auto;
     padding: 50px 0;
 }
 
-.signup h2 {
+.login h2 {
     text-align: center;
     font-family: Gotham;
     font-size: 2.5em;
     margin-bottom: 30px;
 }
 
-.signup label {
+.login label {
     display: block;
     margin: 0 auto;
     width: 80%;
@@ -107,21 +111,30 @@ nav {
     font-family: Moderat;
 }
 
-.signup input {
+.login textarea {
     font-family: Moderat;
     display: block;
     margin: 0 auto;
-    width: 80%;
-    height: 40px;
+    width: 50%;
     border: 1px solid #B5B5B5;
     padding: 0 10px;
 }
 
-.signup input:focus {
+.login input {
+    font-family: Moderat;
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    height: 50px;
+    border: 1px solid #B5B5B5;
+    padding: 0 10px;
+}
+
+.login input:focus {
     border-color: #000000;
 }
 
-.signup input[type="submit"] {
+.login input[type="submit"] {
     display: block;
     margin: 0 auto;
     cursor: pointer;
@@ -132,11 +145,11 @@ nav {
     transition: all .2s ease-out;
 }
 
-.signup input[type="submit"]:hover {
+.login input[type="submit"]:hover {
     background-color: rgb(235, 168, 25);
 }
 
-.signup a {
+.login a {
     font-family: Moderat;
     display: block;
     margin: 15px auto 0 auto;
@@ -167,22 +180,22 @@ nav {
 }
 
 @media (min-width: 875px) {
-    .signup input {
+    .login input {
         width: 50%;
     }
-    .signup label {
+    .login label {
         width: 50%;
     }
 }
 
 @media (max-width: 643px) {
-    .signup {
+    .login {
         width: 90%;
     }
-    .signup input {
+    .login input {
         width: 90%;
     }
-    .signup label {
+    .login label {
         width: 90%;
     }
 }
@@ -250,11 +263,6 @@ nav {
     padding: 12px;
 }
 
-.message {
-    width: 50%;
-    margin: auto;
-}
-
 .isa_success {
     color: rgb(34, 107, 40);
     background-color: rgb(177, 216, 177);
@@ -262,6 +270,7 @@ nav {
     padding: 12px;
 }
 
-.main-nav .active a {
-    color: #E29F0F;
+.message {
+    width: 50%;
+    margin: auto;
 }

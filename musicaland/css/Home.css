@@ -375,33 +375,6 @@ figure figcaption {
     padding-right: 8%;
 }
 
-.extens .over {
-    padding: 0 !important;
-    z-index: -1;
-    position: relative;
-    left: 19%;
-    filter: drop-shadow(1px 4px 6px black);
-}
-
-.extens img {
-    height: 300px;
-    width: 970px;
-}
-
-.extens .s11 {
-    padding-right: 0 !important;
-    margin-top: -6%;
-    display: flex;
-}
-
-.extens .par {
-    font-size: 45px;
-    color: black;
-    width: 31%;
-    position: absolute;
-    z-index: 1;
-    padding-top: 8%;
-}
 
 .sec5 {
     margin-top: 10%;
@@ -558,14 +531,6 @@ figure figcaption {
     .comment img {
         width: 63px;
         height: 63px;
-    }
-    .extens .par {
-        font-size: 25px;
-        width: 56%;
-    }
-    .extens img {
-        height: 200px;
-        width: 270px;
     }
     .sec5 .Gotham,
     .sec5 li a {

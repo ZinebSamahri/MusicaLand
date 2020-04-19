@@ -1,74 +1,92 @@
 <?php
+include 'email.php';
+//Démarrer la session
 session_start();
+//Redirection vers la page des produits au cas ou le client est déjà connecté
+if(isset($_SESSION['id']) && !empty($_SESSION['id'])) {header('location: products.php');exit();}
 
+//Declaration d'un tableau pour stocker les erreurs 
 $errors = array(); 
 
-// connect to the database
+// Connexion à la base de données
 $db = mysqli_connect('localhost', 'id12799307_root', 'rootroot', 'id12799307_musicaland');
 
-function IsEmail ($email) {
-    if (preg_match_all('/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/im',$email)) 
-        return TRUE;
-    else 
-        return FALSE;
+//si la connexion échoue
+if (!$db) die('Could not connect: ' . mysql_error());
+
+//Fonction qui verifie l'email
+function IsEmail ($email,&$errors) {
+    if (!preg_match_all('/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/im',$email)) 
+        array_push($errors, "Email is invalid");
 }
 
-function Mdp($password) {
+//Fonction qui verifie le mot de passe
+function Mdp($password,&$errors) {
     
-    if (strlen( $password) >= 8 && preg_match('/\d/',$password) && preg_match('/[^A-Za-z0-9]/',$password) && preg_match('/[A-Z]+/',$password)) 
-        return TRUE;
-    else 
-        return FALSE;
+    if(strlen( $password) < 8) array_push($errors,"Password must be at least 8 caracters");
+    if(!preg_match('/\d/',$password)) array_push($errors,"Password must have at least one number");
+    if(!preg_match('/[A-Z]+/',$password)) array_push($errors,"Password must have at least one upper case letter");
 }
 
-function IsPhone($tel) {
+//Fonction qui verifie le numéro de téléphone
+function IsPhone($tel,&$errors) {
     
-    if (preg_match('/(\+212|0)([ \-_/]*)(\d[ \-_/]*){9}/',$tel)) 
-        return TRUE;
-    else 
-        return FALSE;
+    if (!preg_match('#(\+212|0)([ \-_/]*)(\d[ \-_/]*){9}#',$tel)) 
+        array_push($errors, "Phone number is invalid");
 }
 
 
-// REGISTER USER
+// Si l'utilisateur clique sur le bouton register
 if (isset($_POST['signup'])) {
   
-    //get inputs
+  //Récuperer les champs et échapper les caractères spéciaux des requêtes SQL
   $fname = mysqli_real_escape_string($db, $_POST['fname']);
   $lname = mysqli_real_escape_string($db, $_POST['lname']);
   $phone = mysqli_real_escape_string($db, $_POST['phone']);
   $email = mysqli_real_escape_string($db, $_POST['email']);
   $password = mysqli_real_escape_string($db, $_POST['password']);
 
-    //get errors
+  //Verifier les champs
   if (empty($fname) || !isset($fname)) { array_push($errors, "First name is required"); }
   if (empty($lname) || !isset($lname)) { array_push($errors, "Last name is required"); }
-  if (empty($phone) || !isset($lname)) { array_push($errors, "Phone number is required"); }
-  else if(!IsPhone($phone)){array_push($errors, "Phone number is invalid");}
+  if (empty($phone) || !isset($phone)) { array_push($errors, "Phone number is required"); }
+  else IsPhone($phone,$errors);
   if (empty($email) || !isset($email)) { array_push($errors, "Email is required"); }
-  else if(!IsEmail($email)){array_push($errors, "Email is invalid");}
+  else IsEmail($email,$errors);
   if (empty($password) || !isset($password)) { array_push($errors, "Password is required"); }
-  else if(!Mdp($password)){array_push($errors, "Password is invalid");}
+  else Mdp($password,$errors);
 
-  // check if user already exists
+  // Vérifier si l'email existe déjà
   $user_check_query = "SELECT * FROM user WHERE email='$email' LIMIT 1";
   $result = mysqli_query($db, $user_check_query);
   $user = mysqli_fetch_assoc($result);
-  
   if ($user) { 
-      array_push($errors, "email already exists");
+      array_push($errors, "Email already exists");
   }
 
-  // no errors ,register user
-  if (count($errors) == 0) {
-  	$password = md5($password);//encrypt the password 
+  // S'il n'y a pas d'erreurs
+  if (empty($errors)) {
+    
+    //Crypter le mot de passe
+  	$password = md5($password);
 
+    //Creer la requete d'insertion dans la table user
   	$query = "INSERT INTO user (name,LastName,phone, email, password) 
-  			  VALUES('$fname',$lname,$phone ,'$email', '$password')";
-  	mysqli_query($db, $query);
-  	$_SESSION['fname'] = $fname;
-  	$_SESSION['success'] = "You are now logged in";
-  	header('location: products.php');
+    VALUES('$fname','$lname','$phone' ,'$email', '$password')";
+    //Executer la requete
+    $res = mysqli_query($db, $query);
+    //Si le user est inseré , le rediriger vers la page des produits
+    if($res){
+        //définir un cookie qui stocke le prénom qui durera 30 jours
+        setcookie("clientName", $fname, time()+(86400 * 30), "/");
+        $_SESSION['id'] = $db->insert_id;
+        sendMail($email,$fname,$lname);
+  	    header('Location: products.php');
+  	    exit();
+    }
+    //Sinon afficher le message d'erreur
+    else echo "<div class='message'><div class='isa_error'>Error signing up</div></div>";
+    
   }
 }
 ?>
@@ -84,9 +102,10 @@ if (isset($_POST['signup'])) {
 </head>
 
 <body>
+    <!-- Menu responsive -->
     <nav class="header">
         <input type="checkbox" id="nav-check">
-        <h1 class="logo"><a href="../index.html">MUSICALAND</a></h1>
+        <h1 class="logo"><a href="../index.php">MUSICALAND</a></h1>
         <div class="nav-btn">
             <label for="nav-check">
               <span></span>
@@ -95,16 +114,12 @@ if (isset($_POST['signup'])) {
             </label>
         </div>
         <ul class="main-nav">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../index.html#instruments">Instruments</a></li>
-            <li><a href="../index.html#pop">Products</a></li>
-            <li><a href="../index.html#sec4">About</a></li>
-            <li><a href="review.html">Review</a></li>
+            <li><a href="../index.php">Home</a></li>
+            <li><a href="../index.php#instruments">Instruments</a></li>
+            <li><a href="../index.php#pop">Products</a></li>
+            <li><a href="../index.php#sec4">About</a></li>
             <li class="active">
                 <a href="#">Signup</a>
-            </li>
-            <li>
-                <a href="">Cart</a>
             </li>
         </ul>
     </nav>
@@ -128,12 +143,13 @@ if (isset($_POST['signup'])) {
             <label for="password">Password</label>
             <input type="password" name="password">
             <br>
-            <input type="submit" value="signup" name="signup">
+            <input type="submit" value="Signup" name="signup">
         </form>
         <a href="login.php">I already have an account</a>
         <div>
-            <?php  if (count($errors) > 0) : ?>
-                <div class="error">
+            <!-- Afficher les erreurs s'il y en a -->
+            <?php  if (!empty($errors)) : ?>
+                <div class="message">
                     <?php foreach ($errors as $error) : ?>
                         <div class="isa_error">
                             <?php echo $error ?>
