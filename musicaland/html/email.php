@@ -15,7 +15,7 @@ function sendMail($email,$fname,$lname){
     $mail->SMTPSecure = 'tls'; // ssl is deprecated
     $mail->SMTPAuth = true;
     $mail->Username = 'musicaland.info@gmail.com'; // email
-    $mail->Password = '33mus66ic@LanD'; // password
+    $mail->Password = ''; // password
     $mail->setFrom('musicaland.info@gmail.com', 'MusicaLand'); // From email and name
     $mail->addAddress($email, $fname); // to email and name
     $mail->Subject = 'Welcome to MusicaLand';
